@@ -7,6 +7,9 @@ import ProductsView from "./views/ProductsView/productsView"
 import ContactView from "./views/ContactView/contactView"
 import NosotrosView from "./views/NosotrosView/NosotrosView"
 import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer"
+import { CartProvider } from "./context/CartContext"
+import CartComponent from "./componets/cartComponent"
+
 
 
 
@@ -16,6 +19,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
+    <CartProvider>
     <NavBar />
     <Routes>
     <Route exact path="/" element={<HomeView/>} />
@@ -24,7 +28,9 @@ function App() {
     <Route exact path="/category/:categoryId" element={<ProductsView/>}/>
     <Route exact path="/Item/:id" element={<ItemDetailContainer/>}/>
     <Route exact path="/Contacto" element={<ContactView/>}/>
+    <Route exact path="/Cart" element={<CartComponent />} />
     </Routes>
+    </CartProvider>
     </BrowserRouter>
     </>
   )

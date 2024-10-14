@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useFilter } from "../hooks/useFilter";
-import { getProducts } from "../asyncMock";
 import ItemCard from "./ItemCard";
 import { Link, useParams } from "react-router-dom";
+import { getProducts } from "../firebase/firebase";
 
 
 export default function ItemListContainer(){
@@ -10,9 +10,21 @@ export default function ItemListContainer(){
         const [products, setProducts]= useState([]);
         const { categoryId } = useParams();
 
-        useEffect(()=>{
-            getProducts.then(data => setProducts(data))
-        },[])
+       
+
+        useEffect(() => {
+         
+          const fetchProducts = async () => {
+              try {
+                  const data = await getProducts();
+                  setProducts(data);
+              } catch (error) {
+                  console.error("Error fetching products:", error);
+              }
+          };
+  
+          fetchProducts();
+      }, []);
 
    
     const productsFiltrados = useFilter(products,"categoryId",categoryId)

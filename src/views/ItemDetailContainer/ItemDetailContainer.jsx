@@ -1,21 +1,31 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import { getProduct } from "../../asyncMock";
+import { getSingleProduct } from "../../firebase/firebase.js";
 import Footer from "../../componets/Footer.jsx"
+import LoadingComponent from "../../componets/LoadingComponent.jsx";
 
 export default function ItemDetailContainer(){
 
   // el use state es una funcion de react que nos permite almacenar informacion en una variable y poder actualizar esa variable atra vez del set.
 
     const [product, setProduct]= useState({})
-
+  const [isLoading, setIsLoading] = useState(true)
     const {id} = useParams();
 
-  //
-    useEffect(()=>{
-        setProduct(getProduct(id))
-    },[id])
-
+    useEffect(() => {
+      setIsLoading(true); // Inicia la carga
+      getSingleProduct(id).then((productData) => {
+        setProduct(productData);
+        setTimeout(() => {
+          setIsLoading(false); 
+        }, 1000);
+      });
+    }, [id]);
+  
+    
+    if (isLoading) {
+      return <LoadingComponent />;
+    }
 
     return(
         <>
@@ -27,17 +37,21 @@ export default function ItemDetailContainer(){
         <div className="md:w-1/2 p-4">
           <img
             className="w-full h-full object-cover rounded-lg"
-            src={product.imagen}
-            alt={product.nombre}
+            src={product.imageUrl}
+            alt={product.name}
           />
         </div>
 
         
         <div className="md:w-1/2 p-8 text-white">
-          <h2 className="text-3xl font-bold mb-4">{product.nombre}</h2>
-          <p className="text-lg mb-4 text-gray-300">{product.descripcion}</p>
-          <p className="text-2xl font-bold text-red-500">{product.precio} €</p>
+          <h2 className="text-3xl font-bold mb-4">{product.name}</h2>
+          <p className="text-lg mb-4 text-gray-300">{product.description}</p>
+          <p className="text-2xl font-bold text-red-500">{product.price} €</p>
+          <button className="bg-slate-50 hover:bg-red-500 text-black font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out" >
+            Agregar
+          </button>
         </div>
+      
       </div>
     </div>
 
