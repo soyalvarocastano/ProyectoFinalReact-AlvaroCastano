@@ -11,7 +11,7 @@ const Navbar = () => {
         
         <div className="flex-shrink-0">
           <Link to={"/"}>
-          <img src="https://firebasestorage.googleapis.com/v0/b/ecommerce-react-23807.appspot.com/o/beta.jpg?alt=media&token=5da92d64-e085-459c-84ff-973d76515d69" alt="Logo" className="h-20 w-auto rounded-full" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/ecommerce-react-23807.appspot.com/o/logo.jpg?alt=media&token=3774d687-4d59-4bf6-9aa7-ef027a2c92b3" alt="Logo" className="h-20 w-auto rounded-full" />
           </Link>
         </div>
 
