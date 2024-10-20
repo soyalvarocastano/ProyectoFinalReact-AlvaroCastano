@@ -8,6 +8,7 @@ export default function HomeView(){
         <>
         <HeroComponent/>
         <ItemListContainer/>
+        <hr className="my-8 border-t-2 border-gray-300 opacity-50" />
         <ContactForm/>
         <Footer/>
         </>

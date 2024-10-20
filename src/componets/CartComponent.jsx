@@ -4,13 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const CartComponent = () => {
     const [cart, , , removeItem, clearCart, , incrementQuantity, decrementQuantity] = useContext(CartContext);
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleCheckout = () => {
         navigate('/CheckOut'); 
-      };
-
+    };
 
     const calculateTotal = () => {
         return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
@@ -40,21 +38,24 @@ const CartComponent = () => {
                     ))}
 
                     <h2 className="text-white mt-4">Total: {calculateTotal()} €</h2>
-                    <button 
-                        onClick={clearCart} 
-                        className="mt-4 bg-red-600 text-white px-4 py-2 rounded">
-                        Vaciar Carrito
-                    </button>
-                    <button 
-                        onClick={handleCheckout} 
-                        className="mt-4 bg-red-600 text-white px-4 py-2 rounded">
-                        Finalizar Compra
-                    </button>
+
+                    <div className="flex justify-between mt-4">
+                        <button 
+                            onClick={clearCart} 
+                            className="bg-red-600 text-white px-4 py-2 rounded">
+                            Vaciar Carrito
+                        </button>
+                        <button 
+                            onClick={handleCheckout} 
+                            className="bg-red-600 text-white px-4 py-2 rounded">
+                            Finalizar Compra
+                        </button>
+                    </div>
                 </div>
-                
             )}
         </div>
     );
 };
 
 export default CartComponent;
+

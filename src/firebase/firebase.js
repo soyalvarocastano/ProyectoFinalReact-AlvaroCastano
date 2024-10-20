@@ -101,3 +101,17 @@ export async function sendOrder(order) {
       console.log("error al actualizar un items: " + error);
     }
   }
+
+  export async function sendContactMessage(contactData) {
+    const contactsCollection = collection(db, 'contact'); 
+  
+    try {
+      const docRef = await addDoc(contactsCollection, contactData);
+      console.log('Nuevo mensaje de contacto: ' + docRef.id);
+      return docRef.id;
+    } catch (error) {
+      console.log('Error al agregar el mensaje: ' + error);
+      throw error; 
+    }
+  }
+  

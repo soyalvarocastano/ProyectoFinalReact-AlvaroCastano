@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { sendOrder } from '../firebase/firebase'; 
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CheckOut = () => {
   const [cart, , , , clearCart] = useContext(CartContext); 
@@ -28,13 +29,17 @@ const CheckOut = () => {
 
     
     const orderId = await sendOrder(order);
-    alert(`Tu orden ha sido creada. ID de la orden: ${orderId}`);
     
     
-    clearCart();
-
-   
-    navigate('/');
+    Swal.fire({
+      icon: 'success',
+      title: 'Gracias por su compra',
+      text: `Su orden ha sido creada. ID de la orden: ${orderId}`,
+      confirmButtonText: 'Aceptar'
+    }).then(() => {
+      clearCart();
+      navigate('/');
+    });
   };
 
   return (
