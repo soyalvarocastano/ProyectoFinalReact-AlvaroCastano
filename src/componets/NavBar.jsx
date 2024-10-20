@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
-console.log(process.env.FIREBASE_API_KEY);
 
   return (
     <nav className="bg-slate-900 text-white">
