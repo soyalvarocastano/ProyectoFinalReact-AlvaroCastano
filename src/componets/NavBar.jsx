@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
+console.log(process.env.FIREBASE_API_KEY);
+
   return (
     <nav className="bg-slate-900 text-white">
       <div className="container mx-auto flex items-center justify-between p-4">
@@ -10,7 +12,7 @@ const Navbar = () => {
         
         <div className="flex-shrink-0">
           <Link to={"/"}>
-          <img src="./imagenes/logo.jpg" alt="Logo" className="h-20 w-auto rounded-full" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/ecommerce-react-23807.appspot.com/o/beta.jpg?alt=media&token=5da92d64-e085-459c-84ff-973d76515d69" alt="Logo" className="h-20 w-auto rounded-full" />
           </Link>
         </div>
 

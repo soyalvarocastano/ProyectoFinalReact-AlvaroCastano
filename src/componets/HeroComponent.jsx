@@ -38,7 +38,7 @@ export default function HeroComponent() {
          
           <div className="flex justify-center lg:justify-end">
             <img
-              src="../../imagenes/instrumentosfondo.avif"
+              src="https://firebasestorage.googleapis.com/v0/b/ecommerce-react-23807.appspot.com/o/premium_photo-1664194584456-c25febbccb2a.jpg?alt=media&token=48d8119b-fa77-4107-a0c9-1ac6dd6e0726"
               alt="Imagen de fondo instrumentos musicales"
               className="w-full max-w-md lg:max-w-lg rounded-lg shadow-lg"
             />
