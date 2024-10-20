@@ -25,9 +25,24 @@ export function CartProvider({children}){
         setCart([]);
     };
 
-    const removeItem = (id) => {
-        
-        const updatedCart = cart.filter((item) => item.id !== id);
+    const incrementQuantity = (index) => {
+        const updatedCart = [...cart];
+        if (updatedCart[index].quantity < updatedCart[index].stock) {
+            updatedCart[index].quantity++;
+            setCart(updatedCart);
+        }
+    };
+
+    const decrementQuantity = (index) => {
+        const updatedCart = [...cart];
+        if (updatedCart[index].quantity > 1) { 
+            updatedCart[index].quantity--;
+            setCart(updatedCart);
+        }
+    };
+
+    const removeItem = (index) => {
+        const updatedCart = cart.filter((_, i) => i !== index);
         setCart(updatedCart);
     };
 
@@ -36,10 +51,8 @@ export function CartProvider({children}){
         return cart.some((item) => item.id === id);
     };
 
-
-
     return(
-    <CartContext.Provider value={[cart, setCart, addItem, removeItem, clearCart, isInCart]}>
+    <CartContext.Provider value={[cart, setCart, addItem, removeItem, clearCart, isInCart,incrementQuantity,decrementQuantity]}>
     {children}
     </CartContext.Provider>)
 

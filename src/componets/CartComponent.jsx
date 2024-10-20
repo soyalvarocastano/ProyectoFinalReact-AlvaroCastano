@@ -3,37 +3,14 @@ import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const CartComponent = () => {
-    const [cart, setCart] = useContext(CartContext); 
+    const [cart, , , removeItem, clearCart, , incrementQuantity, decrementQuantity] = useContext(CartContext);
+
     const navigate = useNavigate()
 
     const handleCheckout = () => {
         navigate('/CheckOut'); 
       };
 
-    const incrementQuantity = (index) => {
-        const updatedCart = [...cart];
-        if (updatedCart[index].quantity < updatedCart[index].stock) {
-            updatedCart[index].quantity++;
-            setCart(updatedCart);
-        }
-    };
-
-    const decrementQuantity = (index) => {
-        const updatedCart = [...cart];
-        if (updatedCart[index].quantity > 1) { 
-            updatedCart[index].quantity--;
-            setCart(updatedCart);
-        }
-    };
-
-    const removeItem = (index) => {
-        const updatedCart = cart.filter((_, i) => i !== index);
-        setCart(updatedCart);
-    };
-
-    const clearCart = () => {
-        setCart([]);
-    };
 
     const calculateTotal = () => {
         return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
