@@ -8,7 +8,8 @@ import ContactView from "./views/ContactView/contactView"
 import NosotrosView from "./views/NosotrosView/NosotrosView"
 import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer"
 import { CartProvider } from "./context/CartContext"
-import CartComponent from "./componets/cartComponent"
+import CartComponent from "./componets/CartComponent"
+import CheckOut from "./componets/CheckOut"
 
 
 
@@ -29,6 +30,7 @@ function App() {
     <Route exact path="/Item/:id" element={<ItemDetailContainer/>}/>
     <Route exact path="/Contacto" element={<ContactView/>}/>
     <Route exact path="/Cart" element={<CartComponent />} />
+    <Route exact path="/checkout" element={<CheckOut />} />
     </Routes>
     </CartProvider>
     </BrowserRouter>

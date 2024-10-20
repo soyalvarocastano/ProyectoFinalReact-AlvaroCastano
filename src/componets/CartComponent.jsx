@@ -1,8 +1,14 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const CartComponent = () => {
     const [cart, setCart] = useContext(CartContext); 
+    const navigate = useNavigate()
+
+    const handleCheckout = () => {
+        navigate('/CheckOut'); 
+      };
 
     const incrementQuantity = (index) => {
         const updatedCart = [...cart];
@@ -62,7 +68,13 @@ const CartComponent = () => {
                         className="mt-4 bg-red-600 text-white px-4 py-2 rounded">
                         Vaciar Carrito
                     </button>
+                    <button 
+                        onClick={handleCheckout} 
+                        className="mt-4 bg-red-600 text-white px-4 py-2 rounded">
+                        Finalizar Compra
+                    </button>
                 </div>
+                
             )}
         </div>
     );
