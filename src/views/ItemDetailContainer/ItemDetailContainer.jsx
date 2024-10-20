@@ -5,9 +5,7 @@ import Footer from "../../componets/Footer.jsx"
 import LoadingComponent from "../../componets/LoadingComponent.jsx";
 
 export default function ItemDetailContainer(){
-
-  // el use state es una funcion de react que nos permite almacenar informacion en una variable y poder actualizar esa variable atra vez del set.
-
+  
     const [product, setProduct]= useState({})
   const [isLoading, setIsLoading] = useState(true)
     const {id} = useParams();
