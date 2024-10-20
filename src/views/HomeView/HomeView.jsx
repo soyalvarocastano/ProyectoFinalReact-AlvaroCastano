@@ -1,6 +1,6 @@
 import ContactForm from "../../componets/ContactForm.jsx"
 import Footer from "../../componets/Footer.jsx"
-import HeroComponent from "../../componets/heroComponent"
+import HeroComponent from "../../componets/HeroComponent.jsx"
 import ItemListContainer from "../../componets/ItemListContainer.jsx"
 
 export default function HomeView(){
