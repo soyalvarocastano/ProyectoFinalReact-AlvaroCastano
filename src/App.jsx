@@ -2,7 +2,7 @@
 import NavBar from "./componets/NavBar"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import HomeView from "./views/HomeView/homeView"
+import HomeView from "./views/HomeView/HomeView"
 import ProductsView from "./views/ProductsView/productsView"
 import ContactView from "./views/ContactView/contactView"
 import NosotrosView from "./views/NosotrosView/NosotrosView"
